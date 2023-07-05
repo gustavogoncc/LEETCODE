@@ -1,0 +1,26 @@
+public class IntervalosResumidos {
+	public List<String> intervalosResumidos(int[]nums){
+		List<String> ranges = new ArrayList<>();
+		int i = 0;
+		while(i < nums.length) {
+			int start = nums[i];
+			while( i + 1 < nums.length && nums[i+1] == nums[i] + 1) {
+				i++;
+			}
+			int fim = nums[i];
+			if(start != fim) {
+				ranges.add(start + "->" + fim);
+			}else {
+				ranges.add(Integer.toString(start));
+			}
+			i++;
+		}
+		return ranges;
+	}
+	public static void main(String[]args) {
+		int[] nums = {0,1,2,3,4,5,6,7,8,9,10};
+		IntervalosResumidos sr = new IntervalosResumidos();
+		List<String> result = sr.intervalosResumidos(nums); 
+		System.out.println(result);
+		}
+	}
